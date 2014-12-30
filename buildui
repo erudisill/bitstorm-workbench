@@ -1,3 +1,4 @@
 #!/bin/bash
 
 pyuic4 ./ui/MainWindow.ui > ./ui/MainWindow.py
+pyuic4 ./ui/MacListWidget.ui > ./ui/MacListWidget.py

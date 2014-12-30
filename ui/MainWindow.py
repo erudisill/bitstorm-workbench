@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/MainWindow.ui'
 #
-# Created: Fri Dec 19 09:44:12 2014
+# Created: Tue Dec 30 15:51:39 2014
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,12 +26,17 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(1056, 761)
+        MainWindow.resize(1403, 1008)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
+        self.gridLayout = QtGui.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
+        self.mdiArea = QtGui.QMdiArea(self.centralwidget)
+        self.mdiArea.setObjectName(_fromUtf8("mdiArea"))
+        self.gridLayout.addWidget(self.mdiArea, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1056, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1403, 22))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menu_File = QtGui.QMenu(self.menubar)
         self.menu_File.setObjectName(_fromUtf8("menu_File"))
@@ -46,11 +51,26 @@ class Ui_MainWindow(object):
         self.dockWidgetContents.setObjectName(_fromUtf8("dockWidgetContents"))
         self.verticalLayout = QtGui.QVBoxLayout(self.dockWidgetContents)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.listView = QtGui.QListView(self.dockWidgetContents)
-        self.listView.setObjectName(_fromUtf8("listView"))
-        self.verticalLayout.addWidget(self.listView)
+        self.listWidget = QtGui.QListWidget(self.dockWidgetContents)
+        self.listWidget.setObjectName(_fromUtf8("listWidget"))
+        self.verticalLayout.addWidget(self.listWidget)
         self.dockWidget.setWidget(self.dockWidgetContents)
         MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(1), self.dockWidget)
+        self.dockWidget_2 = QtGui.QDockWidget(MainWindow)
+        self.dockWidget_2.setAllowedAreas(QtCore.Qt.BottomDockWidgetArea)
+        self.dockWidget_2.setObjectName(_fromUtf8("dockWidget_2"))
+        self.dockWidgetContents_2 = QtGui.QWidget()
+        self.dockWidgetContents_2.setObjectName(_fromUtf8("dockWidgetContents_2"))
+        self.gridLayout_2 = QtGui.QGridLayout(self.dockWidgetContents_2)
+        self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
+        self.textEdit = QtGui.QTextEdit(self.dockWidgetContents_2)
+        self.textEdit.setObjectName(_fromUtf8("textEdit"))
+        self.gridLayout_2.addWidget(self.textEdit, 0, 0, 1, 1)
+        self.lineEdit = QtGui.QLineEdit(self.dockWidgetContents_2)
+        self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
+        self.gridLayout_2.addWidget(self.lineEdit, 1, 0, 1, 1)
+        self.dockWidget_2.setWidget(self.dockWidgetContents_2)
+        MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(8), self.dockWidget_2)
         self.actionE_xit = QtGui.QAction(MainWindow)
         self.actionE_xit.setObjectName(_fromUtf8("actionE_xit"))
         self.menu_File.addSeparator()
@@ -64,5 +84,6 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.menu_File.setTitle(_translate("MainWindow", "&File", None))
         self.dockWidget.setWindowTitle(_translate("MainWindow", "Devices", None))
+        self.dockWidget_2.setWindowTitle(_translate("MainWindow", "Console", None))
         self.actionE_xit.setText(_translate("MainWindow", "E&xit", None))
 
