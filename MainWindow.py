@@ -18,18 +18,13 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
         self.setCorner( QtCore.Qt.BottomLeftCorner, QtCore.Qt.LeftDockWidgetArea );
         self.setCorner( QtCore.Qt.BottomRightCorner, QtCore.Qt.RightDockWidgetArea );
         
+        # http://stackoverflow.com/questions/14330642/how-do-i-achieve-consistent-highlighting-of-qlistwidget-items-across-widget-stat
+        self.setStyleSheet('''
+            QListWidget:item:selected:active { background: lightblue }
+            ''')
+        
         self.devices = []
         
-#         for i in range(10):
-#             w = MacListWidget()
-#             w.setMac("000000" + str(i) + str(i))
-#             w.setRSSI("-" + str(i) + str(i))
-#             w.setBatt(str(i) + str(i))
-#             wi = QtGui.QListWidgetItem(self.listWidget)
-#             wi.setSizeHint(w.sizeHint())
-#             self.listWidget.addItem(wi)
-#             self.listWidget.setItemWidget(wi, w)            
-
         self.clientThread = BsClient(BsClient.HOST, BsClient.PORT)
         self.clientThread.received.connect(self.updateMacList)
         self.clientThread.start()
@@ -37,7 +32,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def updateMacList(self, record):
         try:
             device = next(d for d in self.devices if d.mac == record.mac)
-        except Exception as ex:
+        except Exception:
             # no record found, so create one as well as a widget
             device = Device()
             device.mac = record.mac
@@ -48,7 +43,7 @@ class MainWindow(QtGui.QMainWindow, Ui_MainWindow):
             self.listWidget.addItem(wi)
             self.listWidget.setItemWidget(wi, w)
             
-        device.rssi = record.rssi
+        device.rssi = record.rssi_dec
         device.batt = record.batt
         device.count = device.count + 1
         device.update()

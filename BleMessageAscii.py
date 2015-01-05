@@ -4,6 +4,8 @@ Created on Dec 29, 2014
 @author: ericrudisill
 '''
 import time
+import binascii
+import struct
 
 class BleMessageAscii(object):
 
@@ -12,6 +14,7 @@ class BleMessageAscii(object):
         parts = self.raw.replace('*', '').split(' ')
         self.mac = parts[0]
         self.rssi = int(parts[1], 16)
+        self.rssi_dec = struct.unpack('b', binascii.unhexlify(parts[1]))[0]
         self.temp = int(parts[2], 16)
         self.batt = int(parts[3], 16)
         self.cs = int(parts[4], 16)

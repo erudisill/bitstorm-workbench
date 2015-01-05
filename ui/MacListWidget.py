@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/MacListWidget.ui'
 #
-# Created: Tue Dec 30 15:51:39 2014
+# Created: Mon Jan  5 14:10:29 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,55 +26,44 @@ except AttributeError:
 class Ui_MacListWidget(object):
     def setupUi(self, MacListWidget):
         MacListWidget.setObjectName(_fromUtf8("MacListWidget"))
-        MacListWidget.resize(225, 56)
+        MacListWidget.resize(248, 62)
         self.gridLayout = QtGui.QGridLayout(MacListWidget)
         self.gridLayout.setMargin(6)
-        self.gridLayout.setVerticalSpacing(0)
+        self.gridLayout.setVerticalSpacing(6)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        self.horizontalLayout = QtGui.QHBoxLayout()
-        self.horizontalLayout.setSpacing(-1)
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.label_2 = QtGui.QLabel(MacListWidget)
-        self.label_2.setObjectName(_fromUtf8("label_2"))
-        self.horizontalLayout.addWidget(self.label_2)
+        self.labelAge = QtGui.QLabel(MacListWidget)
+        self.labelAge.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.labelAge.setObjectName(_fromUtf8("labelAge"))
+        self.gridLayout.addWidget(self.labelAge, 3, 2, 1, 1)
+        self.labelBatt = QtGui.QLabel(MacListWidget)
+        self.labelBatt.setAlignment(QtCore.Qt.AlignCenter)
+        self.labelBatt.setObjectName(_fromUtf8("labelBatt"))
+        self.gridLayout.addWidget(self.labelBatt, 3, 1, 1, 1)
         self.labelRSSI = QtGui.QLabel(MacListWidget)
         self.labelRSSI.setObjectName(_fromUtf8("labelRSSI"))
-        self.horizontalLayout.addWidget(self.labelRSSI)
-        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.label = QtGui.QLabel(MacListWidget)
-        self.label.setObjectName(_fromUtf8("label"))
-        self.horizontalLayout.addWidget(self.label)
-        self.labelBatt = QtGui.QLabel(MacListWidget)
-        self.labelBatt.setObjectName(_fromUtf8("labelBatt"))
-        self.horizontalLayout.addWidget(self.labelBatt)
-        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
-        self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.labelRSSI, 3, 0, 1, 1)
         self.labelMac = QtGui.QLabel(MacListWidget)
         font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Menlo"))
         font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         self.labelMac.setFont(font)
         self.labelMac.setObjectName(_fromUtf8("labelMac"))
-        self.gridLayout.addWidget(self.labelMac, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.labelMac, 0, 0, 1, 3)
         self.line = QtGui.QFrame(MacListWidget)
-        self.line.setFrameShadow(QtGui.QFrame.Sunken)
-        self.line.setLineWidth(1)
         self.line.setFrameShape(QtGui.QFrame.HLine)
         self.line.setFrameShadow(QtGui.QFrame.Sunken)
         self.line.setObjectName(_fromUtf8("line"))
-        self.gridLayout.addWidget(self.line, 3, 0, 1, 1)
+        self.gridLayout.addWidget(self.line, 4, 0, 1, 3)
 
         self.retranslateUi(MacListWidget)
         QtCore.QMetaObject.connectSlotsByName(MacListWidget)
 
     def retranslateUi(self, MacListWidget):
         MacListWidget.setWindowTitle(_translate("MacListWidget", "Form", None))
-        self.label_2.setText(_translate("MacListWidget", "RSSI:", None))
-        self.labelRSSI.setText(_translate("MacListWidget", "0", None))
-        self.label.setText(_translate("MacListWidget", "Batt:", None))
-        self.labelBatt.setText(_translate("MacListWidget", "0", None))
+        self.labelAge.setText(_translate("MacListWidget", "0 s", None))
+        self.labelBatt.setText(_translate("MacListWidget", "0 V", None))
+        self.labelRSSI.setText(_translate("MacListWidget", "0 dB", None))
         self.labelMac.setText(_translate("MacListWidget", "MAC", None))
 
