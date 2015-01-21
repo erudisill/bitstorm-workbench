@@ -3,22 +3,34 @@ Created on Jan 5, 2015
 
 @author: ericrudisill
 '''
+from PyQt4.Qt import QObject, pyqtSignal
+import time
 
-class Device(object):
-
+class DeviceHistory(object):
     def __init__(self):
+        self.ts = time.time()
+        self.rssi = 0
+        self.batt = 0
+        self.volts = 0.0
+
+class Device(QObject):
+
+    dataChanged = pyqtSignal(object)
+
+    def __init__(self, parent=None):
+        super(Device, self).__init__(parent)
         self.mac = "0000000000000000"
         self.rssi = 0
         self.batt = 0
         self.volts = 0.0
         self.count = 0
-        self.observers = []
-        
-    def observe(self, callback):
-        self.observers.append(callback)
+        self.history = []
         
     def update(self):
-        # string volts = ((3 * (d.lastMessage.battery >> 4) * 1.24) / 2048).ToString("0.00 V");
         self.volts = ((3 * (self.batt >> 4) * 1.24) / 2048)
-        for c in self.observers:
-            c(self)
+        h = DeviceHistory()
+        h.rssi = self.rssi
+        h.batt = self.batt
+        h.volts = self.volts
+        self.history.append(h)
+        self.dataChanged.emit(self)

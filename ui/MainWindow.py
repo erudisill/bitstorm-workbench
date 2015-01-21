@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/MainWindow.ui'
 #
-# Created: Mon Jan  5 14:10:29 2015
+# Created: Fri Jan  9 11:16:04 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -40,6 +40,8 @@ class Ui_MainWindow(object):
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menu_File = QtGui.QMenu(self.menubar)
         self.menu_File.setObjectName(_fromUtf8("menu_File"))
+        self.menuPlots = QtGui.QMenu(self.menubar)
+        self.menuPlots.setObjectName(_fromUtf8("menuPlots"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
@@ -51,6 +53,13 @@ class Ui_MainWindow(object):
         self.dockWidgetContents.setObjectName(_fromUtf8("dockWidgetContents"))
         self.verticalLayout = QtGui.QVBoxLayout(self.dockWidgetContents)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.checkSelectAll = QtGui.QCheckBox(self.dockWidgetContents)
+        self.checkSelectAll.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.checkSelectAll.setObjectName(_fromUtf8("checkSelectAll"))
+        self.horizontalLayout.addWidget(self.checkSelectAll)
+        self.verticalLayout.addLayout(self.horizontalLayout)
         self.listWidget = QtGui.QListWidget(self.dockWidgetContents)
         self.listWidget.setObjectName(_fromUtf8("listWidget"))
         self.verticalLayout.addWidget(self.listWidget)
@@ -73,9 +82,13 @@ class Ui_MainWindow(object):
         MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(8), self.dockWidget_2)
         self.actionE_xit = QtGui.QAction(MainWindow)
         self.actionE_xit.setObjectName(_fromUtf8("actionE_xit"))
+        self.actionRSSI_Histogram = QtGui.QAction(MainWindow)
+        self.actionRSSI_Histogram.setObjectName(_fromUtf8("actionRSSI_Histogram"))
         self.menu_File.addSeparator()
         self.menu_File.addAction(self.actionE_xit)
+        self.menuPlots.addAction(self.actionRSSI_Histogram)
         self.menubar.addAction(self.menu_File.menuAction())
+        self.menubar.addAction(self.menuPlots.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -83,7 +96,10 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.menu_File.setTitle(_translate("MainWindow", "&File", None))
+        self.menuPlots.setTitle(_translate("MainWindow", "Plots", None))
         self.dockWidget.setWindowTitle(_translate("MainWindow", "Devices", None))
+        self.checkSelectAll.setText(_translate("MainWindow", "Select All", None))
         self.dockWidget_2.setWindowTitle(_translate("MainWindow", "Console", None))
         self.actionE_xit.setText(_translate("MainWindow", "E&xit", None))
+        self.actionRSSI_Histogram.setText(_translate("MainWindow", "RSSI Histogram", None))
 

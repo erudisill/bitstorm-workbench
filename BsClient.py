@@ -9,12 +9,15 @@ from PyQt4 import QtCore
 from PyQt4.Qt import pyqtSignal
 from BleMessageAscii import BleMessageAscii
 from copy import copy
+from appMessage import AppMessage
+from messageBase import MessageBase
+from cobs import cobs
 
 class BsClient(QtCore.QThread):
     
     HOST, PORT = "localhost", 1337
     
-    received = pyqtSignal(BleMessageAscii)
+    received = pyqtSignal(MessageBase)
 
     def __init__(self, ip, port):
         super(BsClient, self).__init__()
@@ -25,15 +28,24 @@ class BsClient(QtCore.QThread):
         print "BsClient running"
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((self.ip, self.port))
-        maf = MessageAsciiFactory()
+        #maf = MessageAsciiFactory()
         try:
             while True:
                 response = sock.recv(1024)
                 if not response: 
                     break
-                records = maf.receive(response)
-                for r in records:
-                    self.received.emit(copy(r))
+                try:
+                    decoded = bytearray(cobs.decode(response))
+                    if decoded[0] == 0xAB and decoded[1] == 0xAB:
+                        pass
+                    else:
+                        r = AppMessage(decoded)
+                        self.received.emit(copy(r))
+                except Exception as ex:
+                    print str(ex)
+#                 records = maf.receive(response)
+#                 for r in records:
+#                     self.received.emit(copy(r))
                         
         except Exception as ex:
             print "BsClient exception: " + str(ex)

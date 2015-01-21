@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file './ui/MacListWidget.ui'
 #
-# Created: Mon Jan  5 14:10:29 2015
+# Created: Fri Jan  9 11:16:04 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -34,7 +34,7 @@ class Ui_MacListWidget(object):
         self.labelAge = QtGui.QLabel(MacListWidget)
         self.labelAge.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.labelAge.setObjectName(_fromUtf8("labelAge"))
-        self.gridLayout.addWidget(self.labelAge, 3, 2, 1, 1)
+        self.gridLayout.addWidget(self.labelAge, 3, 3, 1, 1)
         self.labelBatt = QtGui.QLabel(MacListWidget)
         self.labelBatt.setAlignment(QtCore.Qt.AlignCenter)
         self.labelBatt.setObjectName(_fromUtf8("labelBatt"))
@@ -42,6 +42,11 @@ class Ui_MacListWidget(object):
         self.labelRSSI = QtGui.QLabel(MacListWidget)
         self.labelRSSI.setObjectName(_fromUtf8("labelRSSI"))
         self.gridLayout.addWidget(self.labelRSSI, 3, 0, 1, 1)
+        self.line = QtGui.QFrame(MacListWidget)
+        self.line.setFrameShape(QtGui.QFrame.HLine)
+        self.line.setFrameShadow(QtGui.QFrame.Sunken)
+        self.line.setObjectName(_fromUtf8("line"))
+        self.gridLayout.addWidget(self.line, 4, 0, 1, 4)
         self.labelMac = QtGui.QLabel(MacListWidget)
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Menlo"))
@@ -50,12 +55,17 @@ class Ui_MacListWidget(object):
         font.setWeight(50)
         self.labelMac.setFont(font)
         self.labelMac.setObjectName(_fromUtf8("labelMac"))
-        self.gridLayout.addWidget(self.labelMac, 0, 0, 1, 3)
-        self.line = QtGui.QFrame(MacListWidget)
-        self.line.setFrameShape(QtGui.QFrame.HLine)
-        self.line.setFrameShadow(QtGui.QFrame.Sunken)
-        self.line.setObjectName(_fromUtf8("line"))
-        self.gridLayout.addWidget(self.line, 4, 0, 1, 3)
+        self.gridLayout.addWidget(self.labelMac, 0, 0, 1, 2)
+        self.checkActive = QtGui.QCheckBox(MacListWidget)
+        self.checkActive.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.checkActive.setText(_fromUtf8(""))
+        self.checkActive.setChecked(False)
+        self.checkActive.setObjectName(_fromUtf8("checkActive"))
+        self.gridLayout.addWidget(self.checkActive, 0, 3, 1, 1)
+        self.labelCount = QtGui.QLabel(MacListWidget)
+        self.labelCount.setAlignment(QtCore.Qt.AlignCenter)
+        self.labelCount.setObjectName(_fromUtf8("labelCount"))
+        self.gridLayout.addWidget(self.labelCount, 3, 2, 1, 1)
 
         self.retranslateUi(MacListWidget)
         QtCore.QMetaObject.connectSlotsByName(MacListWidget)
@@ -66,4 +76,5 @@ class Ui_MacListWidget(object):
         self.labelBatt.setText(_translate("MacListWidget", "0 V", None))
         self.labelRSSI.setText(_translate("MacListWidget", "0 dB", None))
         self.labelMac.setText(_translate("MacListWidget", "MAC", None))
+        self.labelCount.setText(_translate("MacListWidget", "0", None))
 
